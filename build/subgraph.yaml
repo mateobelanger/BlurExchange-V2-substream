@@ -1,0 +1,16 @@
+specVersion: 0.0.6
+description: blur-exchange-v2 substreams based subgraph
+repository: null
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: substreams
+    name: blur-exchange-v2
+    network: mainnet
+    source:
+      package:
+        moduleName: graph_out
+        file: blur-exchange-v2/blur-exchange-v2-v0.1.0.spkg
+    mapping:
+      kind: substreams/graph-entities
+      apiVersion: 0.0.5

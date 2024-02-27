@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package contract.v1;
+
+message Events {
+    repeated exchangev2_AdminChanged1 exchangev2_admin_changed_1s = 1;
+    repeated exchangev2_AdminChanged2 exchangev2_admin_changed_2s = 2;
+    repeated exchangev2_BeaconUpgraded1 exchangev2_beacon_upgraded_1s = 3;
+    repeated exchangev2_BeaconUpgraded2 exchangev2_beacon_upgraded_2s = 4;
+    repeated exchangev2_CancelTrade exchangev2_cancel_trades = 5;
+    repeated exchangev2_Execution exchangev2_executions = 6;
+    repeated exchangev2_Execution721MakerFeePacked exchangev2_execution721_maker_fee_packeds = 7;
+    repeated exchangev2_Execution721Packed exchangev2_execution721_packeds = 8;
+    repeated exchangev2_Execution721TakerFeePacked exchangev2_execution721_taker_fee_packeds = 9;
+    repeated exchangev2_Initialized exchangev2_initializeds = 10;
+    repeated exchangev2_NewBlockRange exchangev2_new_block_ranges = 11;
+    repeated exchangev2_NewGovernor exchangev2_new_governors = 12;
+    repeated exchangev2_NewProtocolFee exchangev2_new_protocol_fees = 13;
+    repeated exchangev2_NonceIncremented exchangev2_nonce_incrementeds = 14;
+    repeated exchangev2_OwnershipTransferStarted exchangev2_ownership_transfer_starteds = 15;
+    repeated exchangev2_OwnershipTransferred exchangev2_ownership_transferreds = 16;
+    repeated exchangev2_SetOracle exchangev2_set_oracles = 17;
+    repeated exchangev2_Upgraded1 exchangev2_upgraded_1s = 18;
+    repeated exchangev2_Upgraded2 exchangev2_upgraded_2s = 19;
+}
+
+message Calls {
+}
+
+
+message exchangev2_AdminChanged1 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_admin = 5;
+    bytes new_admin = 6;
+}
+
+message exchangev2_AdminChanged2 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_admin = 5;
+    bytes new_admin = 6;
+}
+
+message exchangev2_BeaconUpgraded1 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes beacon = 5;
+}
+
+message exchangev2_BeaconUpgraded2 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes beacon = 5;
+}
+
+message exchangev2_CancelTrade {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes user = 5;
+    bytes hash = 6;
+    string index = 7;
+    string amount = 8;
+}
+
+message exchangev2_Execution {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes order_hash = 5;
+    string listing_index = 6;
+    string price = 7;
+    uint64 order_type = 8;
+}
+
+message exchangev2_Execution721MakerFeePacked {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes order_hash = 5;
+    string token_id_listing_index_trader = 6;
+    string collection_price_side = 7;
+    string maker_fee_recipient_rate = 8;
+}
+
+message exchangev2_Execution721Packed {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes order_hash = 5;
+    string token_id_listing_index_trader = 6;
+    string collection_price_side = 7;
+}
+
+message exchangev2_Execution721TakerFeePacked {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes order_hash = 5;
+    string token_id_listing_index_trader = 6;
+    string collection_price_side = 7;
+    string taker_fee_recipient_rate = 8;
+}
+
+message exchangev2_Initialized {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    uint64 version = 5;
+}
+
+message exchangev2_NewBlockRange {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string block_range = 5;
+}
+
+message exchangev2_NewGovernor {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes governor = 5;
+}
+
+message exchangev2_NewProtocolFee {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes recipient = 5;
+    uint64 rate = 6;
+}
+
+message exchangev2_NonceIncremented {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes user = 5;
+    string new_nonce = 6;
+}
+
+message exchangev2_OwnershipTransferStarted {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_owner = 5;
+    bytes new_owner = 6;
+}
+
+message exchangev2_OwnershipTransferred {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_owner = 5;
+    bytes new_owner = 6;
+}
+
+message exchangev2_SetOracle {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes user = 5;
+    bool approved = 6;
+}
+
+message exchangev2_Upgraded1 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes implementation = 5;
+}
+
+message exchangev2_Upgraded2 {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes implementation = 5;
+}

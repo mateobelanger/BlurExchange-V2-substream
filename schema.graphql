@@ -1,0 +1,165 @@
+type exchangev2_admin_changed1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_admin: String!
+    previous_admin: String!
+}
+type exchangev2_admin_changed2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_admin: String!
+    previous_admin: String!
+}
+type exchangev2_beacon_upgraded1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    beacon: String!
+}
+type exchangev2_beacon_upgraded2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    beacon: String!
+}
+type exchangev2_cancel_trade @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount: BigDecimal!
+    hash: String!
+    index: BigDecimal!
+    user: String!
+}
+type exchangev2_execution @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    listing_index: BigDecimal!
+    order_hash: String!
+    order_type: Int!
+    price: BigDecimal!
+}
+type exchangev2_execution721_maker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    maker_fee_recipient_rate: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type exchangev2_execution721_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type exchangev2_execution721_taker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    taker_fee_recipient_rate: BigDecimal!
+    token_id_listing_index_trader: BigDecimal!
+}
+type exchangev2_initialized @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    version: BigInt!
+}
+type exchangev2_new_governor @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    governor: String!
+}
+type exchangev2_new_protocol_fee @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    rate: Int!
+    recipient: String!
+}
+type exchangev2_nonce_incremented @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_nonce: BigDecimal!
+    user: String!
+}
+type exchangev2_ownership_transfer_started @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type exchangev2_ownership_transferred @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type exchangev2_set_oracle @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    approved: Boolean!
+    user: String!
+}
+type exchangev2_upgraded1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    implementation: String!
+}
+type exchangev2_upgraded2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    implementation: String!
+}

@@ -1,0 +1,485 @@
+type proxy_admin_changed1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_admin: String!
+    previous_admin: String!
+}
+type proxy_admin_changed2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_admin: String!
+    previous_admin: String!
+}
+type proxy_beacon_upgraded1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    beacon: String!
+}
+type proxy_beacon_upgraded2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    beacon: String!
+}
+type proxy_cancel_trade @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount: BigDecimal!
+    hash: String!
+    index: BigDecimal!
+    user: String!
+}
+type proxy_execution @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    listing_index: BigDecimal!
+    order_hash: String!
+    order_type: Int!
+    price: BigDecimal!
+}
+type proxy_execution721_maker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    maker_fee_recipient_rate: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type proxy_execution721_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type proxy_execution721_taker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    taker_fee_recipient_rate: BigDecimal!
+    token_id_listing_index_trader: BigDecimal!
+}
+type proxy_initialized @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    version: Int!
+}
+type proxy_new_block_range @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    block_range: BigDecimal!
+}
+type proxy_new_governor @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    governor: String!
+}
+type proxy_new_protocol_fee @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    rate: Int!
+    recipient: String!
+}
+type proxy_nonce_incremented @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_nonce: BigDecimal!
+    user: String!
+}
+type proxy_ownership_transfer_started @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type proxy_ownership_transferred @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type proxy_set_oracle @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    approved: Boolean!
+    user: String!
+}
+type proxy_upgraded1 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    implementation: String!
+}
+type proxy_upgraded2 @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    implementation: String!
+}
+type source_admin_changed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_admin: String!
+    previous_admin: String!
+}
+type source_beacon_upgraded @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    beacon: String!
+}
+type source_cancel_trade @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount: BigDecimal!
+    hash: String!
+    index: BigDecimal!
+    user: String!
+}
+type source_execution @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    listing_index: BigDecimal!
+    order_hash: String!
+    order_type: Int!
+    price: BigDecimal!
+}
+type source_execution721_maker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    maker_fee_recipient_rate: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type source_execution721_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    token_id_listing_index_trader: BigDecimal!
+}
+type source_execution721_taker_fee_packed @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    collection_price_side: BigDecimal!
+    order_hash: String!
+    taker_fee_recipient_rate: BigDecimal!
+    token_id_listing_index_trader: BigDecimal!
+}
+type source_initialized @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    version: Int!
+}
+type source_new_block_range @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    block_range: BigDecimal!
+}
+type source_new_governor @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    governor: String!
+}
+type source_new_protocol_fee @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    rate: Int!
+    recipient: String!
+}
+type source_nonce_incremented @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_nonce: BigDecimal!
+    user: String!
+}
+type source_ownership_transfer_started @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type source_ownership_transferred @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    new_owner: String!
+    previous_owner: String!
+}
+type source_set_oracle @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    approved: Boolean!
+    user: String!
+}
+type source_upgraded @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    implementation: String!
+}
+type source_call_accept_ownership @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+}
+type source_call_cancel_trades @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    cancels: [skip]!
+}
+type source_call_increment_nonce @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+}
+type source_call_initialize @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+}
+type source_call_renounce_ownership @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+}
+type source_call_set_block_range @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    u_block_range: BigDecimal!
+}
+type source_call_set_governor @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    u_governor: String!
+}
+type source_call_set_oracle @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    approved: Boolean!
+    oracle: String!
+}
+type source_call_set_protocol_fee @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    rate: Int!
+    recipient: String!
+}
+type source_call_take_ask @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    oracle_signature: String!
+}
+type source_call_take_ask_pool @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    amount_to_withdraw: BigDecimal!
+    oracle_signature: String!
+}
+type source_call_take_ask_single @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    oracle_signature: String!
+}
+type source_call_take_ask_single_pool @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    amount_to_withdraw: BigDecimal!
+    oracle_signature: String!
+}
+type source_call_take_bid @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    oracle_signature: String!
+}
+type source_call_take_bid_single @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    oracle_signature: String!
+}
+type source_call_transfer_ownership @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    new_owner: String!
+}
+type source_call_upgrade_to @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    new_implementation: String!
+}
+type source_call_upgrade_to_and_call @entity {
+    id: ID!
+    call_tx_hash: String!
+    call_block_time: String!
+    call_block_number: BigInt!
+    call_ordinal: BigInt!
+    call_success: Bool!
+    data: String!
+    new_implementation: String!
+}
+

@@ -785,7 +785,7 @@ fn map_calls_inputs(blk: &eth::Block, calls: &mut CallsWithInputs, tracked_contr
                             && abi::source_contract::functions::TakeAsk::match_call(call)
                     })
                     .filter_map(|call| {
-                        substreams::log::info!("TakeAskExt: {:?}", Hex::encode(&tx.hash));
+                        substreams::log::info!("TakeAskExt: Mapped");
                         match abi::source_contract::functions::TakeAsk::decode(call) {
                             Ok(decoded_call) => Some(TakeAskExt {
                                 call: Some(contract::SourceTakeAskCall {
@@ -815,7 +815,7 @@ fn map_calls_inputs(blk: &eth::Block, calls: &mut CallsWithInputs, tracked_contr
                             && abi::source_contract::functions::TakeAskSingle::match_call(call)
                     })
                     .filter_map(|call| {
-                        substreams::log::info!("TakeAskExt: {:?}", Hex::encode(&tx.hash));
+                        substreams::log::info!("TakeAskExt Mapped");
                         match abi::source_contract::functions::TakeAskSingle::decode(call) {
                             Ok(decoded_call) => Some(TakeAskSingleExt {
                                 call: Some(contract::SourceTakeAskSingleCall {
@@ -846,7 +846,7 @@ fn map_calls_inputs(blk: &eth::Block, calls: &mut CallsWithInputs, tracked_contr
                             && abi::source_contract::functions::TakeBid::match_call(call)
                     })
                     .filter_map(|call| {
-                        substreams::log::info!("TakeAskExt: {:?}", Hex::encode(&tx.hash));
+                        substreams::log::info!("TakeAskExt Mapped");
                         match abi::source_contract::functions::TakeBid::decode(call) {
                             Ok(decoded_call) => Some(TakeBidExt {
                                 call: Some(contract::SourceTakeBidCall {
@@ -877,7 +877,7 @@ fn map_calls_inputs(blk: &eth::Block, calls: &mut CallsWithInputs, tracked_contr
                             && abi::source_contract::functions::TakeBidSingle::match_call(call)
                     })
                     .filter_map(|call| {
-                        substreams::log::info!("TakeAskExt: {:?}", Hex::encode(&tx.hash));
+                        substreams::log::info!("TakeAskExt Mapped");
                         match abi::source_contract::functions::TakeBidSingle::decode(call) {
                             Ok(decoded_call) => Some(TakeBidSingleExt {
                                 call: Some(contract::SourceTakeBidSingleCall {
@@ -1557,7 +1557,6 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,
     );
 
-    substreams::log::info!("Take bids single #{}", trades.list.len());
 
     trades.list.append(
         &mut txs
@@ -1595,8 +1594,6 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,
     );
 
-    substreams::log::info!("Take bids #{}", trades.list.len());
-
     trades.list.append(
         &mut txs
             .take_asks_single
@@ -1626,8 +1623,6 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
             })
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,
     );
-
-    substreams::log::info!("Take asks single #{}", trades.list.len());
 
     trades.list.append(
         &mut txs
@@ -1665,10 +1660,7 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
             })
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,
     );
-
-    substreams::log::info!("Take asks #{}", trades.list.len());
-    substreams::log::info!("Trades: {:#?}", trades);
-
+    
     Ok(trades)
 }
 

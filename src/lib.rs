@@ -18,10 +18,12 @@ use db_outs::*;
 use num_traits::cast::ToPrimitive;
 use std::str::FromStr;
 use substreams::scalar::{BigDecimal, BigInt};
+use substreams_entity_change::pb::entity::value::Typed::Int32;
 
 substreams_ethereum::init!();
 
 use abi::structs_mapping::*;
+use crate::pb::custom::v1::AssetType;
 
 const PROXY_TRACKED_CONTRACT: [u8; 20] = hex!("b2ecfe4e4d61f8790bbb9de2d1259b9e2410cea5");
 const SOURCE_TRACKED_CONTRACT: [u8; 20] = hex!("5fa60726e62c50af45ff2f6280c468da438a7837");
@@ -46,7 +48,7 @@ fn map_proxy_events(blk: &eth::Block, events: &mut contract::Events) {
                                 evt_block_number: blk.number,
                                 listing_index: event.listing_index.to_string(),
                                 order_hash: Vec::from(event.order_hash),
-                                order_type: event.order_type.to_u64(),
+                                order_type: event.order_type.to_i32(),
                                 price: event.price.to_string(),
                             });
                         }
@@ -237,7 +239,7 @@ fn map_source_events(blk: &eth::Block, events: &mut contract::Events) {
                                 evt_block_number: blk.number,
                                 listing_index: event.listing_index.to_string(),
                                 order_hash: Vec::from(event.order_hash),
-                                order_type: event.order_type.to_u64(),
+                                order_type: event.order_type.to_i32(),
                                 price: event.price.to_string(),
                             });
                         }
@@ -1483,9 +1485,9 @@ fn graph_trades_out(trades: &Trades, tables: &mut EntityChangesTables) {
         tables
             .create_row("trades", &trade.tx_hash)
             .set("tx_hash", &trade.tx_hash)
-            .set("timestamp", trade.timestamp.as_ref().unwrap())
+            .set("block_time", trade.block_time.as_ref().unwrap().to_string())
             .set("eth_value", BigInt::from_signed_bytes_be(&trade.eth_value))
-            .set("trade_type", trade.trade_type);
+            .set("trade_type", TradeType::from_i32(trade.trade_type).unwrap().as_str_name());
         trade.erc_721_transfers.iter().for_each(|transfer| {
             tables
                 .create_row(
@@ -1609,7 +1611,7 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
 
                 Ok(Trade {
                     tx_hash: call.call_tx_hash.clone().into(),
-                    timestamp: call.call_block_time.clone(),
+                    block_time: call.call_block_time.clone(),
                     eth_value: listing.price.clone(),
                     trade_type: TradeType::TakeAskSingle as i32,
                     erc_721_transfers: vec![Transfer721 {
@@ -1655,10 +1657,10 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
 
                 Ok(Trade {
                     tx_hash: call.call_tx_hash.clone().into(),
-                    timestamp: call.call_block_time.clone(),
+                    block_time: call.call_block_time.clone(),
                     eth_value: trade_eth_value.to_signed_bytes_be(),
                     trade_type: TradeType::TakeAsk as i32,
-                    erc_721_transfers: erc_721_transfers,
+                    erc_721_transfers,
                 })
             })
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,

@@ -1,10 +1,12 @@
 type trades @entity {
     id: ID!
     tx_hash: String!
-    timestamp: BigInt!
+    # TODO: Consider chaging to Unix (BigInt)
+    block_time: String!
     eth_value: BigInt!
-    trade_type: TradeType!
-    erc_721_transfers: [erc_721_transfers!]!
+    # TODO: Change to Enum (requires implementation of enum.to_value()
+    trade_type: String!
+    erc_721_transfers: [erc_721_transfers!]
 }
 
 type erc_721_transfers @entity {

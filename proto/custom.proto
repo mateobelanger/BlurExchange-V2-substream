@@ -32,7 +32,7 @@ message TakeBidSingleExt {
 
 message Trade {
   string tx_hash = 1;
-  google.protobuf.Timestamp timestamp = 2;
+  google.protobuf.Timestamp block_time = 2;
   bytes total_wei_value = 3;
   Transfer721 erc_721_transfer = 4;
   TradeType trade_type = 5;

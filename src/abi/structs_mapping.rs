@@ -217,7 +217,7 @@ pub struct Trade {
     #[prost(string, tag = "1")]
     pub tx_hash: String,
     #[prost(message, optional, tag="2")]
-    pub timestamp: Option<::prost_types::Timestamp>,
+    pub block_time: Option<::prost_types::Timestamp>,
     #[prost(bytes, tag = "3")]
     pub eth_value: Vec<u8>,
     #[prost(message, repeated, tag = "4")]
@@ -492,19 +492,6 @@ impl From<(Vec<u8>, BigInt, BigInt, Vec<u8>, BigInt)> for Transfer {
         }
     }
 }
-
-// struct FungibleTransfers {
-//     totalProtocolFee: BigInt,
-//     totalSellerTransfer: BigInt,
-//     totalTakerFee: BigInt,
-//     feeRecipientId: BigInt,
-//     makerId: BigInt,
-//     feeRecipients: Vec<Address>,
-//     makers: Vec<Address>,
-//     makerTransfers: Vec<BigInt>,
-//     feeTransfers: Vec<BigInt>,
-//     executions: Vec<AtomicExecution>,
-// }
 
 impl From<(FeeRate, FeeRate)> for Fees {
     fn from(tuple: (FeeRate, FeeRate)) -> Self {

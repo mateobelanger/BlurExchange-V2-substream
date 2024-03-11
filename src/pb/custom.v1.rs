@@ -49,7 +49,7 @@ pub struct Trade {
     #[prost(string, tag="1")]
     pub tx_hash: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]
-    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    pub block_time: ::core::option::Option<::prost_types::Timestamp>,
     #[prost(bytes="vec", tag="3")]
     pub total_wei_value: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="4")]

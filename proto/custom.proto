@@ -46,7 +46,7 @@ message Transfer721 {
   string from = 1;
   string to = 2;
   int64 id = 3;
-  int64 amount = 4;
+  int32 amount = 4;
   string collection = 5;
   AssetType asset_type = 6;
 }
@@ -204,7 +204,7 @@ message proxy_Execution {
   bytes order_hash = 5;
   string listing_index = 6;
   string price = 7;
-  uint64 order_type = 8;
+  int32 order_type = 8;
 }
 
 message proxy_Execution721MakerFeePacked {
@@ -360,7 +360,7 @@ message source_Execution {
   bytes order_hash = 5;
   string listing_index = 6;
   string price = 7;
-  uint64 order_type = 8;
+  int32 order_type = 8;
 }
 
 message source_Execution721MakerFeePacked {
@@ -682,7 +682,7 @@ message Taker {
 message Listing {
   int64 index = 1;
   bytes token_id = 2;
-  int64 amount = 3;
+  int32 amount = 3;
   bytes price = 4;
 }
 

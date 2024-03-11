@@ -1495,12 +1495,12 @@ fn graph_trades_out(trades: &Trades, tables: &mut EntityChangesTables) {
                     format!("{}-{}", trade.tx_hash, (&transfer.token_id).to_value()),
                 )
                 .set("tx_hash", &trade.tx_hash)
-                .set("token_id", &transfer.token_id)
+                .set("token_id", BigInt::from_signed_bytes_be(&transfer.token_id))
                 .set("from", &transfer.from)
                 .set("to", &transfer.to)
                 .set("amount", transfer.amount)
                 .set("collection", &transfer.collection)
-                .set("asset_type", transfer.asset_type);
+                .set("asset_type", AssetType::from_i32(transfer.asset_type).unwrap().as_str_name());
         });
     })
 }
@@ -1541,14 +1541,14 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
 
                 Ok(Trade {
                     tx_hash: call.call_tx_hash.clone().into(),
-                    timestamp: call.call_block_time.clone(),
+                    block_time: call.call_block_time.clone(),
                     eth_value: listing.price.clone(),
                     trade_type: TradeType::TakeBidSingle.into(),
                     erc_721_transfers: vec![Transfer721 {
                         token_id: listing.token_id.clone(),
                         from: tx.from.clone().unwrap().into(),
                         to: order.trader.clone().unwrap().into(),
-                        amount: listing.amount.clone(),
+                        amount: listing.amount.clone() as i32,
                         collection: order.collection.clone().unwrap().into(),
                         asset_type: order.asset_type.clone(),
                     }],
@@ -1586,10 +1586,10 @@ fn map_trades(txs: CallsWithInputs) -> Result<Trades, substreams::errors::Error>
                 }
                 Ok(Trade {
                     tx_hash: call.call_tx_hash.clone().into(),
-                    timestamp: call.call_block_time.clone(),
+                    block_time: call.call_block_time.clone(),
                     eth_value: trade_eth_value.to_signed_bytes_be(),
                     trade_type: TradeType::TakeBid.into(),
-                    erc_721_transfers: erc_721_transfers,
+                    erc_721_transfers,
                 })
             })
             .collect::<Result<Vec<_>, substreams::errors::Error>>()?,

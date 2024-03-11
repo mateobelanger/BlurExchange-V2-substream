@@ -17,7 +17,8 @@ type erc_721_transfers @entity {
     token_id: BigInt!
     amount: Int!
     collection: String!
-    asset_type: AssetType!
+    # TODO: Change to Enum (requires implementation of enum.to_value()
+    asset_type: String!
 }
 
 enum AssetType {

@@ -72,8 +72,8 @@ pub struct Transfer721 {
     pub to: ::prost::alloc::string::String,
     #[prost(int64, tag="3")]
     pub id: i64,
-    #[prost(int64, tag="4")]
-    pub amount: i64,
+    #[prost(int32, tag="4")]
+    pub amount: i32,
     #[prost(string, tag="5")]
     pub collection: ::prost::alloc::string::String,
     #[prost(enumeration="AssetType", tag="6")]
@@ -290,8 +290,8 @@ pub struct ProxyExecution {
     pub listing_index: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
     pub price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="8")]
-    pub order_type: u64,
+    #[prost(int32, tag="8")]
+    pub order_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -568,8 +568,8 @@ pub struct SourceExecution {
     pub listing_index: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
     pub price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="8")]
-    pub order_type: u64,
+    #[prost(int32, tag="8")]
+    pub order_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1136,8 +1136,8 @@ pub struct Listing {
     pub index: i64,
     #[prost(bytes="vec", tag="2")]
     pub token_id: ::prost::alloc::vec::Vec<u8>,
-    #[prost(int64, tag="3")]
-    pub amount: i64,
+    #[prost(int32, tag="3")]
+    pub amount: i32,
     #[prost(bytes="vec", tag="4")]
     pub price: ::prost::alloc::vec::Vec<u8>,
 }

@@ -1,8 +1,8 @@
 # Blur Exchange (V2) Substreams powered Subgraph
 
 This substream indexes trades and operations made on the Blur NFT Exchange (https://blur.io/). All raw events and calls are mapped first, then adapted to a single trade entity.
-
-::: warning Note: Only four types of trades are supported for now: TakeAsk, TakeAskSingle, TakeBid, TakeBidSingle. :::
+> [!NOTE]  
+> For now, this substreams indexes the following four types of trades: TakeAsk, TakeAskSingle, TakeBid, TakeBidSingle.
 
 ## Quick Start
 

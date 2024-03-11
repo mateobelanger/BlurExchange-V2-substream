@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: blur_exchange_v2
+  name: blurexchange_v2
   version: v0.1.0
 
 imports:
@@ -11,7 +11,7 @@ imports:
 
 protobuf:
   files:
-    - contract.proto
+    - custom.proto
   importPaths:
     - ./proto
 
@@ -35,7 +35,16 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:contract.v1.Calls
+      type: proto:custom.v1.CallsWithInputs
+
+
+  - name: map_trades
+    kind: map
+    initialBlock: 17603892
+    inputs:
+      - map: map_calls
+    output:
+      type: proto:custom.v1.Trades
 
   - name: db_out
     kind: map
@@ -52,6 +61,7 @@ modules:
     inputs:
       - map: map_events
       - map: map_calls
+      - map: map_trades
     output:
       type: proto:sf.substreams.entity.v1.EntityChanges
 

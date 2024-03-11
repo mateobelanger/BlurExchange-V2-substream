@@ -80,7 +80,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "blur_exchange_v2"
+name = "blurexchange_v2"
 version = "0.0.1"
 dependencies = [
  "anyhow",
@@ -92,6 +92,9 @@ dependencies = [
  "prost",
  "prost-types",
  "regex",
+ "rustc-hex",
+ "serde",
+ "serde_json",
  "substreams",
  "substreams-database-change",
  "substreams-entity-change",

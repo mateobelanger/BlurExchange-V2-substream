@@ -1,8 +1,96 @@
 syntax = "proto3";
-
-package contract.v1;
+package custom.v1;
 
 import "google/protobuf/timestamp.proto";
+
+message CallsWithInputs {
+  repeated TakeAskExt take_asks = 1;
+  repeated TakeAskSingleExt take_asks_single = 2;
+  repeated TakeBidExt take_bids = 3;
+  repeated TakeBidSingleExt take_bids_single = 4;
+}
+
+message TakeAskExt {
+  source_TakeAskCall call = 1;
+  TakeAsk inputs = 2;
+}
+
+message TakeAskSingleExt {
+  source_TakeAskSingleCall call = 1;
+  TakeAskSingle inputs = 2;
+}
+
+message TakeBidExt {
+  source_TakeBidCall call = 1;
+  TakeBid inputs = 2;
+}
+
+message TakeBidSingleExt {
+  source_TakeBidSingleCall call = 1;
+  TakeBidSingle inputs = 2;
+}
+
+message Trade {
+  string tx_hash = 1;
+  google.protobuf.Timestamp block_time = 2;
+  bytes total_wei_value = 3;
+  Transfer721 erc_721_transfer = 4;
+  TradeType trade_type = 5;
+}
+
+message Trades {
+  repeated Trade trades = 1;
+}
+
+message Transfer721 {
+  string from = 1;
+  string to = 2;
+  int64 id = 3;
+  int32 amount = 4;
+  string collection = 5;
+  AssetType asset_type = 6;
+}
+
+enum TradeType {
+  TAKEASK = 0;
+  TAKEASKSINGLE = 1;
+  TAKEASKSINGLEPOOL = 2;
+  TAKEBID = 3;
+  TAKEBIDSINGLE = 4;
+  TAKEBIDSINGLEPOOL = 5;
+}
+/*
+       #[derive(Clone, PartialEq, Message)]
+   pub struct Transfer721 {
+   #[prost(message, optional, tag="1")]
+       pub from: Option<Address>,
+       #[prost(message, optional, tag="2")]
+       pub to: Option<Address>,
+       #[prost(int64, tag="3")]
+       pub id: i64,
+       #[prost(int64, tag="4")]
+       pub amount: i64,
+       #[prost(message, optional, tag="5")]
+       pub collection: Option<Address>,
+       #[prost(enumeration="AssetType", tag="6")]
+       pub asset_type: i32,
+       }
+
+   #[derive(Clone, PartialEq, Message)]
+       pub struct TransferERC20 {
+   #[prost(message, optional, tag="1")]
+       pub from: Option<Address>,
+       #[prost(message, optional, tag="2")]
+       pub to: Option<Address>,
+       #[prost(int64, tag="3")]
+       pub amount: i64,
+       #[prost(message, tag="4")]
+       pub token: Option<Address>,
+       #[prost(string, tag="5")]
+       pub token_name: String,
+       }
+
+*/
 
 message Events {
   repeated proxy_AdminChanged1 proxy_admin_changed_1s = 1;
@@ -116,7 +204,7 @@ message proxy_Execution {
   bytes order_hash = 5;
   string listing_index = 6;
   string price = 7;
-  uint64 order_type = 8;
+  int32 order_type = 8;
 }
 
 message proxy_Execution721MakerFeePacked {
@@ -272,7 +360,7 @@ message source_Execution {
   bytes order_hash = 5;
   string listing_index = 6;
   string price = 7;
-  uint64 order_type = 8;
+  int32 order_type = 8;
 }
 
 message source_Execution721MakerFeePacked {
@@ -587,15 +675,15 @@ message Exchange {
 }
 
 message Taker {
-  int64 token_id = 1;
+  bytes token_id = 1;
   int64 amount = 2;
 }
 
 message Listing {
   int64 index = 1;
-  int64 token_id = 2;
-  int64 amount = 3;
-  int64 price = 4;
+  bytes token_id = 2;
+  int32 amount = 3;
+  bytes price = 4;
 }
 
 enum OrderType {
@@ -607,7 +695,6 @@ enum AssetType {
   ERC721 = 0;
   ERC1155 = 1;
 }
-
 message TakeBidSingle {
   Order order = 1;
   Exchange exchange = 2;

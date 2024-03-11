@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: blur_exchange_v2
+  name: blurexchange_v2
   version: v0.1.0
 
 imports:

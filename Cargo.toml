@@ -1,5 +1,5 @@
 [package]
-name = "blur_exchange_v2"
+name = "blurexchange_v2"
 version = "0.0.1"
 edition = "2021"
 
@@ -18,6 +18,10 @@ substreams = "0.5"
 substreams-ethereum = "0.9"
 substreams-database-change = "1"
 substreams-entity-change = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rustc-hex = "2.1.0"
+
 
 # Required so that ethabi > ethereum-types build correctly under wasm32-unknown-unknown
 [target.wasm32-unknown-unknown.dependencies]

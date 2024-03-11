@@ -1,6 +1,86 @@
 // @generated
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CallsWithInputs {
+    #[prost(message, repeated, tag="1")]
+    pub take_asks: ::prost::alloc::vec::Vec<TakeAskExt>,
+    #[prost(message, repeated, tag="2")]
+    pub take_asks_single: ::prost::alloc::vec::Vec<TakeAskSingleExt>,
+    #[prost(message, repeated, tag="3")]
+    pub take_bids: ::prost::alloc::vec::Vec<TakeBidExt>,
+    #[prost(message, repeated, tag="4")]
+    pub take_bids_single: ::prost::alloc::vec::Vec<TakeBidSingleExt>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TakeAskExt {
+    #[prost(message, optional, tag="1")]
+    pub call: ::core::option::Option<SourceTakeAskCall>,
+    #[prost(message, optional, tag="2")]
+    pub inputs: ::core::option::Option<TakeAsk>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TakeAskSingleExt {
+    #[prost(message, optional, tag="1")]
+    pub call: ::core::option::Option<SourceTakeAskSingleCall>,
+    #[prost(message, optional, tag="2")]
+    pub inputs: ::core::option::Option<TakeAskSingle>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TakeBidExt {
+    #[prost(message, optional, tag="1")]
+    pub call: ::core::option::Option<SourceTakeBidCall>,
+    #[prost(message, optional, tag="2")]
+    pub inputs: ::core::option::Option<TakeBid>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TakeBidSingleExt {
+    #[prost(message, optional, tag="1")]
+    pub call: ::core::option::Option<SourceTakeBidSingleCall>,
+    #[prost(message, optional, tag="2")]
+    pub inputs: ::core::option::Option<TakeBidSingle>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Trade {
+    #[prost(string, tag="1")]
+    pub tx_hash: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="2")]
+    pub block_time: ::core::option::Option<::prost_types::Timestamp>,
+    #[prost(bytes="vec", tag="3")]
+    pub total_wei_value: ::prost::alloc::vec::Vec<u8>,
+    #[prost(message, optional, tag="4")]
+    pub erc_721_transfer: ::core::option::Option<Transfer721>,
+    #[prost(enumeration="TradeType", tag="5")]
+    pub trade_type: i32,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Trades {
+    #[prost(message, repeated, tag="1")]
+    pub trades: ::prost::alloc::vec::Vec<Trade>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Transfer721 {
+    #[prost(string, tag="1")]
+    pub from: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub to: ::prost::alloc::string::String,
+    #[prost(int64, tag="3")]
+    pub id: i64,
+    #[prost(int32, tag="4")]
+    pub amount: i32,
+    #[prost(string, tag="5")]
+    pub collection: ::prost::alloc::string::String,
+    #[prost(enumeration="AssetType", tag="6")]
+    pub asset_type: i32,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Events {
     #[prost(message, repeated, tag="1")]
     pub proxy_admin_changed_1s: ::prost::alloc::vec::Vec<ProxyAdminChanged1>,
@@ -210,8 +290,8 @@ pub struct ProxyExecution {
     pub listing_index: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
     pub price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="8")]
-    pub order_type: u64,
+    #[prost(int32, tag="8")]
+    pub order_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -488,8 +568,8 @@ pub struct SourceExecution {
     pub listing_index: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
     pub price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="8")]
-    pub order_type: u64,
+    #[prost(int32, tag="8")]
+    pub order_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1018,6 +1098,8 @@ pub struct Order {
     pub collection: ::core::option::Option<Address>,
     #[prost(bytes="vec", tag="3")]
     pub listings_root: ::prost::alloc::vec::Vec<u8>,
+    #[prost(int64, tag="4")]
+    pub number_of_listings: i64,
     #[prost(int64, tag="5")]
     pub expiration_time: i64,
     #[prost(enumeration="AssetType", tag="6")]
@@ -1042,8 +1124,8 @@ pub struct Exchange {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Taker {
-    #[prost(int64, tag="1")]
-    pub token_id: i64,
+    #[prost(bytes="vec", tag="1")]
+    pub token_id: ::prost::alloc::vec::Vec<u8>,
     #[prost(int64, tag="2")]
     pub amount: i64,
 }
@@ -1052,12 +1134,12 @@ pub struct Taker {
 pub struct Listing {
     #[prost(int64, tag="1")]
     pub index: i64,
-    #[prost(int64, tag="2")]
-    pub token_id: i64,
-    #[prost(int64, tag="3")]
-    pub amount: i64,
-    #[prost(int64, tag="4")]
-    pub price: i64,
+    #[prost(bytes="vec", tag="2")]
+    pub token_id: ::prost::alloc::vec::Vec<u8>,
+    #[prost(int32, tag="3")]
+    pub amount: i32,
+    #[prost(bytes="vec", tag="4")]
+    pub price: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1110,6 +1192,44 @@ pub struct TakeAsk {
     pub signatures: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="5")]
     pub token_recipient: ::core::option::Option<Address>,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum TradeType {
+    Takeask = 0,
+    Takeasksingle = 1,
+    Takeasksinglepool = 2,
+    Takebid = 3,
+    Takebidsingle = 4,
+    Takebidsinglepool = 5,
+}
+impl TradeType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            TradeType::Takeask => "TAKEASK",
+            TradeType::Takeasksingle => "TAKEASKSINGLE",
+            TradeType::Takeasksinglepool => "TAKEASKSINGLEPOOL",
+            TradeType::Takebid => "TAKEBID",
+            TradeType::Takebidsingle => "TAKEBIDSINGLE",
+            TradeType::Takebidsinglepool => "TAKEBIDSINGLEPOOL",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "TAKEASK" => Some(Self::Takeask),
+            "TAKEASKSINGLE" => Some(Self::Takeasksingle),
+            "TAKEASKSINGLEPOOL" => Some(Self::Takeasksinglepool),
+            "TAKEBID" => Some(Self::Takebid),
+            "TAKEBIDSINGLE" => Some(Self::Takebidsingle),
+            "TAKEBIDSINGLEPOOL" => Some(Self::Takebidsinglepool),
+            _ => None,
+        }
+    }
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

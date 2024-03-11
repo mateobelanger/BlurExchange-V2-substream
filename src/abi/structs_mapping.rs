@@ -243,8 +243,8 @@ pub struct Transfer721 {
     pub to: String,
     #[prost(bytes, tag="3")]
     pub token_id: Vec<u8>,
-    #[prost(int64, tag="4")]
-    pub amount: i64,
+    #[prost(int32, tag="4")]
+    pub amount: i32,
     #[prost(string, tag="5")]
     pub collection: String,
     #[prost(enumeration="AssetType", tag="6")]
@@ -417,7 +417,7 @@ impl From<(BigInt, BigInt, BigInt, BigInt)> for Listing {
         Listing {
             index: index.to_u64() as i64,
             token_id: token_id.to_signed_bytes_be(),
-            amount: amount.to_u64() as i64,
+            amount: amount.to_u64() as i32,
             price: price.to_signed_bytes_be(),
         }
     }

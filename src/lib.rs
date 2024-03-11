@@ -18,8 +18,6 @@ use db_outs::*;
 use num_traits::cast::ToPrimitive;
 use std::str::FromStr;
 use substreams::scalar::{BigDecimal, BigInt};
-use substreams_entity_change::pb::entity::value::Typed::Int32;
-
 substreams_ethereum::init!();
 
 use abi::structs_mapping::*;

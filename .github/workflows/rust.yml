@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  make-protogen:
 
     runs-on: ghcr.io/streamingfast/substreams
 
@@ -18,5 +18,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build
       run: make protogen --verbose
-    - name: Run tests
+  make-build:
+    runs-on: ghcr.io/streamingfast/substreams
+    needs: make-protogen
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
       run: make build --verbose

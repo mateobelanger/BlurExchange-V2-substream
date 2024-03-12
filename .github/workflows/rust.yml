@@ -11,15 +11,18 @@ env:
 
 jobs:
   make-protogen:
-
-    runs-on: ghcr.io/streamingfast/substreams
+    runs-on: ubuntu-latest                                                                        
+    container:                                                                                    
+      image: ghcr.io/streamingfast/substreams:latest 
 
     steps:
     - uses: actions/checkout@v3
     - name: Build
       run: make protogen --verbose
   make-build:
-    runs-on: ghcr.io/streamingfast/substreams
+    runs-on: ubuntu-latest                                                                        
+    container:                                                                                    
+      image: ghcr.io/streamingfast/substreams:latest 
     needs: make-protogen
     steps:
     - uses: actions/checkout@v3

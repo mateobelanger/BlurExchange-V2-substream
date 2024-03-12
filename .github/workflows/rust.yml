@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: make protogen --verbose
+      run: 	substreams protogen ./substreams.yaml --exclude-paths="sf/substreams,google"
   make-build:
     runs-on: ubuntu-latest                                                                        
     container:                                                                                    
@@ -27,4 +27,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: make build --verbose
+      run: cargo build --target wasm32-unknown-unknown --release

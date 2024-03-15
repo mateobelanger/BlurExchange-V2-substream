@@ -17,8 +17,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install buf
+      run: |
+        set -e
+        curl -sSL \
+          "https://github.com/bufbuild/buf/releases/latest/download/buf-Linux-x86_64" \
+          -o /usr/local/bin/buf
+        chmod +x /usr/local/bin/buf
+ 
     - name: Build
-      run: 	substreams protogen ./substreams.yaml --exclude-paths="sf/substreams,google"
+      run: 	|
+        set -e
+        substreams protogen ./substreams.yaml --exclude-paths="sf/substreams,google"
   make-build:
     runs-on: ubuntu-latest                                                                        
     container:                                                                                    
